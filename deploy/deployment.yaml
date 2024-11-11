@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: hello-sb-k8s
+spec:
+  selector:
+    matchLabels:
+      app: hello-sb-k8s
+  replicas: 2 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: hello-sb-k8s
+    spec:
+      containers:
+        - name: hello-sb-k8s
+          image: docker.io/dukov82/hello:latest
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # The port that the container is running on in the cluster
