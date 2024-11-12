@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: hello-sb-k8s
+  name: spring-boot-app
 spec:
   selector:
     matchLabels:
-      app: hello-sb-k8s
+      app: spring-boot-app
   replicas: 2 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: hello-sb-k8s
+        app: spring-boot-app
     spec:
       containers:
-        - name: hello-sb-k8s
+        - name: spring-boot-app
           image: docker.io/dukov82/hello:latest
           # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
